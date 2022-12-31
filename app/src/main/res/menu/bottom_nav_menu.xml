@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:tools="http://schemas.android.com/tools"
+      tools:context="com.example.food.MainActivity">
+
+    <item
+        android:id="@+id/recipesFragment"
+        android:icon="@drawable/ic_baseline_aod_24"
+        android:title="@string/recipes_fragment" />
+
+    <item
+        android:id="@+id/favoriteRecipesFragment"
+        android:icon="@drawable/ic_baseline_assistant_24"
+        android:title="@string/favorite_recipes_fragment" />
+
+    <item
+        android:id="@+id/foodJokeFragment"
+        android:icon="@drawable/ic_baseline_account_circle_24"
+        android:title="@string/food_joke_fragment" />
+
+</menu>
