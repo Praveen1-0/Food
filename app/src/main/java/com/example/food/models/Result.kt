@@ -1,6 +1,5 @@
 package com.example.food.models
 
-
 import com.google.gson.annotations.SerializedName
 
 data class Result(
