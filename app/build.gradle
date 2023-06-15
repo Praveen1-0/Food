@@ -101,4 +101,6 @@ dependencies {
     // DataStore
     implementation "androidx.datastore:datastore-preferences:1.0.0-alpha01"
 
+    implementation 'org.jsoup:jsoup:1.16.1'
+
 }
