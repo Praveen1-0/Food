@@ -7,7 +7,8 @@ import android.net.NetworkCapabilities
 import android.util.Log
 import androidx.lifecycle.*
 import com.example.food.data.Repository
-import com.example.food.data.database.RecipesEntity
+import com.example.food.data.database.entity.FavoritesEntity
+import com.example.food.data.database.entity.RecipesEntity
 import com.example.food.models.FoodRecipe
 import com.example.food.utils.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -23,14 +24,33 @@ class MainViewModel @Inject constructor(
 ) : AndroidViewModel(application) {
 
     //ROOM DATABASE
-    val readRecipes: LiveData<List<RecipesEntity>> = repository.local.readDatabase().asLiveData()
+    val readRecipes: LiveData<List<RecipesEntity>> = repository.local.readRecipes().asLiveData()
+    val readFavoriteRecipes: LiveData<List<FavoritesEntity>> =
+        repository.local.readFavoriteRecipes().asLiveData()
 
     private fun insertRecipes(recipesEntity: RecipesEntity) =
         viewModelScope.launch(Dispatchers.Default) {
-            Log.d("MainViewModel","Record Inserted")
+            Log.d("MainViewModel", "Record Inserted")
             repository.local.insertRecipes(recipesEntity)
         }
 
+    private fun insertFavoriteRecipe(favoritesEntity: FavoritesEntity) =
+        viewModelScope.launch(Dispatchers.Default) {
+            Log.d("MainViewModel", "Favorite Record Inserted")
+            repository.local.insertFavoriteRecipes(favoritesEntity)
+        }
+
+    private fun deleteFavoriteRecipe(favoritesEntity: FavoritesEntity) =
+        viewModelScope.launch(Dispatchers.Default) {
+            Log.d("MainViewModel", "Delete Favorite Record ")
+            repository.local.deleteFavoriteRecipe(favoritesEntity)
+        }
+
+    private fun deleteAllFavoriteRecipes() =
+        viewModelScope.launch(Dispatchers.Default) {
+            Log.d("MainViewModel", "Delete All Favorite Record ")
+            repository.local.deleteAllFavoriteRecipes()
+        }
 
     //RETROFIT
     var recipesResponse: MutableLiveData<NetworkResult<FoodRecipe>> = MutableLiveData()
@@ -52,7 +72,7 @@ class MainViewModel @Inject constructor(
                 recipesResponse.value = handleFoodRecipesResponse(response)
 
                 val foodRecipe = recipesResponse.value!!.data
-                if (foodRecipe!=null) {
+                if (foodRecipe != null) {
                     offlineCacheRecipes(foodRecipe)
                 }
             } catch (e: Exception) {
@@ -80,7 +100,7 @@ class MainViewModel @Inject constructor(
     }
 
     private fun offlineCacheRecipes(foodRecipe: FoodRecipe) {
-       val recipesEntity = RecipesEntity(foodRecipe)
+        val recipesEntity = RecipesEntity(foodRecipe)
         insertRecipes(recipesEntity)
     }
 
