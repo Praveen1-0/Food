@@ -4,6 +4,7 @@ import androidx.room.TypeConverter
 import com.example.food.models.FoodRecipe
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import com.example.food.models.Result
 
 class RecipesTypeConvertor {
 
@@ -18,5 +19,16 @@ class RecipesTypeConvertor {
     @TypeConverter
     fun foodRecipeToString(foodRecipe: FoodRecipe): String {
         return Gson().toJson(foodRecipe)
+    }
+
+    @TypeConverter
+    fun resultToString(result: Result): String {
+        return gson.toJson(result)
+    }
+
+    @TypeConverter
+    fun stringToResult(data: String): Result {
+        val listType = object : TypeToken<Result>() {}.type
+        return gson.fromJson(data, listType)
     }
 }
