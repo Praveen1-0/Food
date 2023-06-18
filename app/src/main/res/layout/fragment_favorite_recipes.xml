@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="mainViewModel"
             type="com.example.food.viewmodels.MainViewModel" />
@@ -23,12 +22,12 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/favoriteRecipesRecyclerView"
+            setData="@{mAdapter}"
+            viewVisibility="@{mainViewModel.readFavoriteRecipes}"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            viewVisibility="@{mainViewModel.readFavoriteRecipes}"
-            setData="@{mAdapter}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -41,7 +40,7 @@
             android:layout_height="100dp"
             android:alpha="0.5"
             android:src="@drawable/ic_menu_book"
-            android:visibility="gone"
+            android:visibility="invisible"
             viewVisibility="@{mainViewModel.readFavoriteRecipes}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -59,7 +58,7 @@
             android:text="@string/no_favorites_recipes"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:visibility="gone"
+            android:visibility="invisible"
             viewVisibility="@{mainViewModel.readFavoriteRecipes}"
             app:layout_constraintEnd_toEndOf="@+id/no_data_imageView"
             app:layout_constraintStart_toStartOf="@+id/no_data_imageView"

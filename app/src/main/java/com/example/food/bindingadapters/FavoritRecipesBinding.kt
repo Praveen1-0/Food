@@ -28,7 +28,7 @@ class FavoritRecipesBinding {
                         view.visibility = View.VISIBLE
                     }
                     is RecyclerView -> {
-                        view.visibility = View.VISIBLE
+                        view.visibility = View.INVISIBLE
                     }
                 }
             } else {
@@ -40,7 +40,7 @@ class FavoritRecipesBinding {
                         view.visibility = View.INVISIBLE
                     }
                     is RecyclerView -> {
-                        view.visibility = View.INVISIBLE
+                        view.visibility = View.VISIBLE
                         mAdapter?.setData(favoritesEntity)
                     }
                 }
