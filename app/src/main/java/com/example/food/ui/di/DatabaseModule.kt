@@ -1,4 +1,4 @@
-package com.example.food.di
+package com.example.food.ui.di
 
 import android.content.Context
 import androidx.room.Room
