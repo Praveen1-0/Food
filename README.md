@@ -7,6 +7,9 @@
  4) Dagger-Hilt setup networkmodule
  5) Introducing data binding
  6) Display API data in recyclerview
- 7) BottomSheet
- 8) Handle Internet Connection
- 9) Search Recipes
+ 7) Room database
+ 8) Dagger-Hilt setup databasemodule
+ 9) Introducing with DataStore preference.
+ 10) BottomSheet
+ 11) Handle Internet Connection
+ 12) Search Recipes
