@@ -8,5 +8,5 @@
  5) Introducing data binding
  6) Display API data in recyclerview
  7) BottomSheet
- 8)Handle Internet Connection
- 9)Search Recipes
+ 8) Handle Internet Connection
+ 9) Search Recipes
